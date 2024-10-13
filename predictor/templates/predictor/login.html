@@ -14,11 +14,11 @@
             {% csrf_token %}
             
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Username" value="{{ form.username.value }}" required>
+            <input type="text" id="username" name="username" placeholder="Username" value="{{ form.username.value|default:'' }}" required>
             {{ form.username.errors }}
             
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Password" value="{{ form.password.value }}" required>
+            <input type="password" id="password" name="password" placeholder="Password" value="{{ form.password.value|default:'' }}" required>
             {{ form.password.errors }}
             
             <button type="submit">Login</button>

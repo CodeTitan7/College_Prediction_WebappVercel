@@ -14,7 +14,7 @@
             {% csrf_token %}
 
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Choose a username" value="{{ form.username.value }}" required>
+            <input type="text" id="username" name="username" placeholder="Choose a username" value="{{ form.username.value|default:'' }}" required>
             {{ form.username.errors }}
 
             <label for="email">Email</label>
