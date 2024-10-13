@@ -33,8 +33,11 @@ class UserInputForm(forms.Form):
         maths_marks = cleaned_data.get('maths_marks')
         keam_score = cleaned_data.get('keam_score') 
 
-        if keam_score is not None and keam_score < 20:
-            self.add_error('keam_score', 'KEAM eligibility requires a minimum score of 20 (10 in each paper).')
+        if keam_score is not None:
+            if  keam_score < 20:
+                self.add_error('keam_score', 'KEAM eligibility requires a minimum score of 20 (10 in each paper).')
+            elif keam_score > 960:
+                self.add_error('keam_score', 'KEAM score may not exceed 960.')    
 
         if board in ['CBSE', 'ICSE']:
             if (physics_marks > 100 or chemistry_marks > 100 or maths_marks > 100):
